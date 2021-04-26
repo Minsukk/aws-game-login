@@ -4,7 +4,7 @@
 AWS에서 제공하는 서비리스 서비스인 AWS Simple Queue Service(SQS), Amazon DynamoDB, AWS Lambda 와 클라우드 기반의 인증 서비스인 Amazon Cognito를 연계하여 게임 로그인 대기열 구성 해보겠습니다.
 
 ## 1. Architecture
-![Reference Architecture] (./images/serverless-login-queue-architecture.png)
+![Reference Architecture](https://github.com/Minsukk/aws-game-login/blob/main/images/serverless-login-queue-architecture.png)
 
 ****
 ## 2. 로그인 대기열 구성
@@ -34,16 +34,10 @@ AWS에서 제공하는 서비리스 서비스인 AWS Simple Queue Service(SQS), 
         3. Amazon SQS 트리거 함수 [AWS Document](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs-example.html)
    
 ### 2.3 Client 실행
-<pre>
-<code>
 ```bash
  ______   ______   ______   ______   ______   ______   ______ 
 |______| |______| |______| |______| |______| |______| |______|
                                                               
-                                                              
-                                                              
-                                                              
-
           __          _______                      
          /\ \        / / ____|                     
         /  \ \  /\  / / (___   ___  _ __ ___   ___ 
@@ -59,16 +53,8 @@ AWS에서 제공하는 서비리스 서비스인 AWS Simple Queue Service(SQS), 
           | |__| | (_| | | | | | |  __/
            \_____|\__,_|_| |_| |_|\___|
                                        
-                                       
-
-                                                              
-                                                              
  ______   ______   ______   ______   ______   ______   ______ 
 |______| |______| |______| |______| |______| |______| |______|
-                                                              
-                                                              
-                                                              
-                                                              
 
 You are In AWSome Game World 
  O
@@ -76,24 +62,19 @@ You are In AWSome Game World
  |
 / \
 ```
-</code>
-</pre>
-
 
         1. Python virtualenv 사용 권장
         2. 필요 Client 패키지 설치 
-<pre>
-<code>
+
 ```bash
 $ pip install -r requirements.txt
 ```
-</code>
-</pre>
-        3. Client 실행
-<pre>
-<code>
+
+        1. .env 파일 업데이트
+           1. COGNITO_USER_CLIENT_ID : Amazon Cognito App Client ID
+           2. (옵션) AWSOMEGAME_REST_ENDPOINT : 부하 분산용 Amazon API GW 엔드포인트
+        2. Client 실행
+
 ```bash
 $ python client/gameclient.py
 ```
-</code>
-</pre>
