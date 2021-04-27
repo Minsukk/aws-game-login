@@ -91,7 +91,7 @@ def awsomegame_sign_in():
             if response.status_code == 200:
                 login_ticket = response.json()['ticket']
                 q_len = response.json()['sqs_length']
-                timer = q_len * 1
+                timer = int(q_len * 0.001)
                 # Construct url and data for 
                 status_endpoint = login_endpoint + '/status'
                 data = {'login_ticket' : response.json()['ticket']}
@@ -107,8 +107,8 @@ def awsomegame_sign_in():
                         if status['login_status']:
                             draw_stickman()
                             break
-                        elif timer == 0 and not status['login_status']:
-                            timer = 5
+                        elif timer == 1 and not status['login_status']:
+                            timer += 10
                         else:
                             timer -= 1
                 else:
@@ -121,7 +121,7 @@ def awsomegame_sign_in():
         print('internal server error please try again!')
 
 def main():
-#    awsomegame_sign_up()
+    # awsomegame_sign_up()
     awsomegame_sign_in()
 
 if __name__ == '__main__':
